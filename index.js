@@ -15,18 +15,18 @@ import {
     View
 } from 'react-native';
 
-const a: number = 'a'
 
-console.log(a)
+
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
-class ScanScreen extends Component {
+class ScanScreen extends Component<{}, { isOpen: boolean }> {
+    state = {
+        isOpen: false
+    }
+
     constructor(props) {
         super(props);
-        this.state = {
-            isOpened: false
-        }
     }
 
     render() {

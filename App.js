@@ -16,7 +16,6 @@ const instructions = Platform.select({
     'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
 });
-const a: String = 2
 
 type Props = {};
 export default class App extends Component<Props> {
