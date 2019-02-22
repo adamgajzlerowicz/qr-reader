@@ -1,0 +1,29 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "es6": true,
+    "commonjs": true
+  },
+  "extends": [
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "flowtype",
+    "react",
+    "react-native"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "react-native/no-color-literals": 0,
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 0,
+    "react-native/no-inline-styles": 2,
+    "react-native/no-raw-text": 2
+  }
+}
