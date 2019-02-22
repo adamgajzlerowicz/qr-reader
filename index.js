@@ -4,13 +4,13 @@
  * @lint-ignore-every XPLATJSCOPYRIGHT1
  */
 
-import React, { Component } from "react";
+import React from "react";
 import { name as appName } from "./app.json";
 import { StyleSheet, AppRegistry, ToastAndroid, View } from "react-native";
 import { Button } from "teaset";
 import QRCodeScanner from "react-native-qrcode-scanner";
 
-class ScanScreen extends Component<{}, { isOpen: boolean }> {
+class ScanScreen extends React.Component<{}, { isOpen: boolean }> {
   state = {
     isOpen: false
   };
