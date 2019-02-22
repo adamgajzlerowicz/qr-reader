@@ -6,8 +6,8 @@
 
 import React, { Component } from "react";
 import { name as appName } from "./app.json";
-import { AppRegistry, ToastAndroid, Button, View } from "react-native";
-
+import { StyleSheet, AppRegistry, ToastAndroid, View } from "react-native";
+import { Button } from "teaset";
 import QRCodeScanner from "react-native-qrcode-scanner";
 
 class ScanScreen extends Component<{}, { isOpen: boolean }> {
@@ -21,7 +21,7 @@ class ScanScreen extends Component<{}, { isOpen: boolean }> {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         {this.state.isOpen && (
           <QRCodeScanner
             cameraProps={{
@@ -36,12 +36,25 @@ class ScanScreen extends Component<{}, { isOpen: boolean }> {
         {!this.state.isOpen && (
           <Button
             onPress={() => this.setState({ isOpen: true })}
-            title={"open"}
+            size={"lg"}
+            type={"primary"}
+            title={"Scan"}
           />
         )}
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    alignItems: "center",
+    backgroundColor: "white",
+    height: "100%",
+    padding: 20
+  }
+});
 
 AppRegistry.registerComponent(appName, () => ScanScreen);
