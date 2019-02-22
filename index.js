@@ -1,50 +1,48 @@
-// /**
-//  * @format
-//  * @lint-ignore-every XPLATJSCOPYRIGHT1
-//  */
-//
-// import {AppRegistry} from 'react-native';
-// import App from './App';
-// import {name as appName} from './app.json';
-//
-// AppRegistry.registerComponent(appName, () => App);
+/**
+ * @flow
+ * @format
+ * @lint-ignore-every XPLATJSCOPYRIGHT1
+ */
 
-'use strict';
 
 import React, { Component } from 'react';
 import {name as appName} from './app.json';
 import {
     AppRegistry,
     StyleSheet,
-    Text,
-    TouchableOpacity,
-    Linking,
+    ToastAndroid,
+    Button,
+    View
 } from 'react-native';
+
+const a: number = 'a'
+
+console.log(a)
 
 import QRCodeScanner from 'react-native-qrcode-scanner';
 
 class ScanScreen extends Component {
-    onSuccess(e) {
-        Linking
-            .openURL(e.data)
-            .catch(err => console.error('An error occured', err));
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpened: false
+        }
     }
 
     render() {
         return (
-            <QRCodeScanner
-                onRead={this.onSuccess.bind(this)}
-                topContent={
-                    <Text style={styles.centerText}>
-                        Go to <Text style={styles.textBold}>wikipedia.org/wiki/QR_code</Text> on your computer and scan the QR code.
-                    </Text>
-                }
-                bottomContent={
-                    <TouchableOpacity style={styles.buttonTouchable}>
-                        <Text style={styles.buttonText}>OK. Got it!</Text>
-                    </TouchableOpacity>
-                }
-            />
+            <View>
+                {this.state.isOpen && <QRCodeScanner
+                    cameraProps={{
+                        captureAudio: false
+                    }}
+                onRead={e => {
+                    this.setState({ isOpen: false })
+                    ToastAndroid.show(e.data, ToastAndroid.SHORT);
+                }}
+            />}
+                { !this.state.isOpen && <Button onPress={() => this.setState({isOpen: true})} title={"open"}/>}
+            </View>
         );
     }
 }
